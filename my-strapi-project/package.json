@@ -1,12 +1,16 @@
 {
   "name": "my-strapi-project",
-  "private": true,
   "version": "0.1.0",
+  "private": true,
   "description": "A Strapi application",
+  "license": "MIT",
+  "author": {
+    "name": "A Strapi developer"
+  },
   "scripts": {
+    "build": "strapi build",
     "develop": "strapi develop",
     "start": "strapi start",
-    "build": "strapi build",
     "strapi": "strapi"
   },
   "dependencies": {
@@ -23,15 +27,11 @@
     "stripe": "^14.11.0",
     "styled-components": "5.3.3"
   },
-  "author": {
-    "name": "A Strapi developer"
-  },
-  "strapi": {
-    "uuid": "1abf9247-42ce-4ad0-8656-7b7b891e226b"
-  },
   "engines": {
     "node": ">=18.0.0 <=20.x.x",
     "npm": ">=6.0.0"
   },
-  "license": "MIT"
+  "strapi": {
+    "uuid": "1abf9247-42ce-4ad0-8656-7b7b891e226b"
+  }
 }
