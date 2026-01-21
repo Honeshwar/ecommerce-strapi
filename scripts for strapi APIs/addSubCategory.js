@@ -1,6 +1,8 @@
+import { STRAPI_URL } from "./constants.js";
+
 async function addSubCategory(subCategory) {
   try {
-    console.log(`📂 Creating sub-category: ${subCategory.title}`);
+    console.log(`Creating sub-category: ${subCategory.title}`);
 
     const res = await fetch(`${STRAPI_URL}/api/sub-categories`, {
       method: "POST",
@@ -16,6 +18,8 @@ async function addSubCategory(subCategory) {
         },
       }),
     });
+
+    console.log(res.status)
 
     const data = await res.json();
 
@@ -63,7 +67,7 @@ const subCategories = [
   }
 })();
 
-const dubCategId = {
+const subCategId = {
   "T-Shirts": 1,
   Jackets: 2,
   Pants: 3,

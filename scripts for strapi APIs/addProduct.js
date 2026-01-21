@@ -1,7 +1,5 @@
-import { fileFromUrl } from "./helpers";
-
-// Strapi API URL & Token
-const STRAPI_URL = "https://honshwar-ecommerce-store.onrender.com";
+import { STRAPI_URL } from "./constants.js";
+import { fileFromUrl } from "./helpers.js";
 
 // add product func
 async function addProduct(product) {
@@ -42,6 +40,7 @@ async function addProduct(product) {
       body: formData,
     });
 
+    console.log({status: res.status});
     const data = await res.json();
 
     if (!res.ok) {
@@ -62,9 +61,12 @@ const products = [
     price: 999,
     oldPrice: 1299,
     isNew: true,
-    type: "clothing",
+    type: "trending",
     categories: [3], // Men
-    sub_categories: [1], // T-Shirts
+    sub_categories: [1], // T-Shirts,
+    images:[
+      
+    ]
   },
   {
     title: "Denim Jacket",
@@ -72,7 +74,7 @@ const products = [
     price: 2499,
     oldPrice: 2999,
     isNew: false,
-    type: "clothing",
+    type: "trending",
     categories: [2], // Women
     sub_categories: [2], // Jackets
   },
@@ -82,8 +84,8 @@ const products = [
     price: 3499,
     oldPrice: 3999,
     isNew: true,
-    type: "accessory",
-    categories: [5], // Accessories & Shoes
+    type: "featured",
+    categories: [5], // Accessories
     sub_categories: [5], // Bags
   },
   {
@@ -92,7 +94,7 @@ const products = [
     price: 2999,
     oldPrice: 3499,
     isNew: true,
-    type: "shoes",
+    type: "normal",
     categories: [4], // New Season
     sub_categories: [4], // Sneakers
   },
@@ -102,7 +104,7 @@ const products = [
     price: 1999,
     oldPrice: 2499,
     isNew: false,
-    type: "clothing",
+    type: "trending",
     categories: [3], // Men
     sub_categories: [3], // Pants
   },
@@ -112,7 +114,7 @@ const products = [
     price: 2299,
     oldPrice: 2699,
     isNew: true,
-    type: "clothing",
+    type: "trending",
     categories: [2], // Women
     sub_categories: [1], // T-Shirts
   },
@@ -122,7 +124,7 @@ const products = [
     price: 3999,
     oldPrice: 4499,
     isNew: false,
-    type: "clothing",
+    type: "trending",
     categories: [4], // New Season
     sub_categories: [2], // Jackets
   },
@@ -132,7 +134,7 @@ const products = [
     price: 1599,
     oldPrice: 1899,
     isNew: true,
-    type: "accessory",
+    type: "featured",
     categories: [7], // Sales
     sub_categories: [5], // Bags
   },
@@ -142,8 +144,8 @@ const products = [
     price: 2799,
     oldPrice: 3199,
     isNew: true,
-    type: "shoes",
-    categories: [3], // Men
+    type: "normal",
+    categories: [6], // Shoes
     sub_categories: [4], // Sneakers
   },
   {
@@ -152,14 +154,14 @@ const products = [
     price: 1899,
     oldPrice: 2199,
     isNew: false,
-    type: "accessory",
+    type: "featured",
     categories: [2], // Women
     sub_categories: [5], // Bags
   },
 ];
 
-(async () => {
+// (async () => {
   for (let product of products) {
     await addProduct(product);
   }
-})();
+// })();
