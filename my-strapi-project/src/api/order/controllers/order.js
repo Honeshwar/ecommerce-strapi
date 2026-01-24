@@ -1,8 +1,9 @@
 ("use strict");
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+const stripe = require("stripe")('sk_test_51NvFMgSFOJk2h94TuL1nn7tLTTvOiDuxajGkIiToGn8kY3rQt3ztILHvk015EB8e4I1jf0b1c5uYahbGAA1oxKQL00k2gjXbSq');
 /**
  * order controller
  */
+const CLIENT_URL = 'https://honeshwar-store.netlify.app';
 
 const { createCoreController } = require("@strapi/strapi").factories;
 
@@ -15,7 +16,7 @@ module.exports = createCoreController("api::order.order", ({ strapi }) => ({
           const item = await strapi
             .service("api::product.product")
             .findOne(product.id);
-          console.log(process.env.CLIENT_URL);
+          console.log({processEnvClientUrl:process.env.CLIENT_URL});
 
           return {
             price_data: {
@@ -37,8 +38,8 @@ module.exports = createCoreController("api::order.order", ({ strapi }) => ({
         shipping_address_collection: { allowed_countries: ["IN", "US", "CA"] },
         payment_method_types: ["card"],
         mode: "payment",
-        success_url: process.env.CLIENT_URL + "?success=true",
-        cancel_url: process.env.CLIENT_URL + "?success=false",
+        success_url: CLIENT_URL + "?success=true",
+        cancel_url: CLIENT_URL + "?success=false",
         line_items: lineItems,
       });
 
