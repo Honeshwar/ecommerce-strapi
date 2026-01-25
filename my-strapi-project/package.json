@@ -5,7 +5,7 @@
   "description": "A Strapi application",
   "license": "MIT",
   "author": {
-    "name": "A Strapi developer"
+    "name": "Honeshwar Thakur"
   },
   "scripts": {
     "build": "strapi build",
@@ -27,9 +27,6 @@
     "stripe": "^14.11.0",
     "styled-components": "5.3.3"
   },
-  "author": {
-    "name": "Honeshwar Thakur"
-  },
   "strapi": {
     "uuid": "1abf9247-42ce-4ad0-8656-7b7b891e226b"
   },
@@ -37,7 +34,7 @@
     "node": ">=18.0.0 <=20.x.x",
     "npm": ">=6.0.0"
   },
-  "strapi": {
-    "uuid": "1abf9247-42ce-4ad0-8656-7b7b891e226b"
+  "devDependencies": {
+    "baseline-browser-mapping": "^2.9.18"
   }
 }
