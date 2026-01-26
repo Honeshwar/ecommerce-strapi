@@ -1,5 +1,5 @@
 ("use strict");
-const Stripe = require("stripe");
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 /**
  * order controller
  */
@@ -10,20 +10,9 @@ const { createCoreController } = require("@strapi/strapi").factories;
 module.exports = createCoreController("api::order.order", ({ strapi }) => ({
   
   async create(ctx) {
-    try {
-      if (!process.env.STRIPE_SECRET_KEY) {
-        console.log("Stripe key missing", process.env.STRIPE_SECRET_KEY);
-        throw new Error("Stripe key missing");
-      }
-  
-      console.log("Stripe key exists:", process.env.STRIPE_SECRET_KEY);
-      console.log("CLIENT_URL key exists:", process.env.CLIENT_URL);
-      const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-      const CLIENT_URL = process.env.CLIENT_URL;
-  
-  
-      const { products } = ctx.request.body;
+    const { products } = ctx.request.body;
 
+    try {
       const lineItems = await Promise.all(
         products.map(async (product) => {
           const item = await strapi
@@ -31,7 +20,6 @@ module.exports = createCoreController("api::order.order", ({ strapi }) => ({
             .findOne(product.id);
           
           if (!item) {
-            console.log("Product not found:", product.id);
             throw new Error(`Product not found: ${product.id}`);
           }
 
