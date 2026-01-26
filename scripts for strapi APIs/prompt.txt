@@ -1,0 +1,28 @@
+give me new products :
+where use above schema:
+- fill all details:
+
+make sure:
+pick category id from this
+const categId = {
+  Sales: 1,
+  Women: 2,
+  Men: 3,
+  "New Season": 4,
+  "Accessories": 5,
+  Shoes: 6
+};
+
+sub category from here:
+const subCategId = {
+  "T-Shirts": 1,
+  Jackets: 2,
+  Pants: 3,
+  Sneakers: 4,
+  Bags: 5,
+};
+
+
+type: featured, normal, trending
+
+fill all details and also add image link that is active working link use(pixbay,...)
