@@ -1,8 +1,5 @@
-console.log("Stripe key exists:", process.env.STRIPE_SECRET_KEY);
-console.log("CLIENT_URL key exists:", process.env.CLIENT_URL);
-
 ("use strict");
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+const Stripe = require("stripe");
 /**
  * order controller
  */
@@ -11,7 +8,14 @@ const CLIENT_URL = process.env.CLIENT_URL;
 const { createCoreController } = require("@strapi/strapi").factories;
 
 module.exports = createCoreController("api::order.order", ({ strapi }) => ({
+  
   async create(ctx) {
+    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+    const CLIENT_URL = process.env.CLIENT_URL;
+
+    console.log("Stripe key exists:", !!process.env.STRIPE_SECRET_KEY);
+    console.log("CLIENT_URL key exists:", !!process.env.CLIENT_URL);
+    
     const { products } = ctx.request.body;
     try {
       const lineItems = await Promise.all(
