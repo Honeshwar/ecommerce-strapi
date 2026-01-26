@@ -1,3 +1,6 @@
+console.log("Stripe key exists:", process.env.STRIPE_SECRET_KEY);
+console.log("CLIENT_URL key exists:", process.env.CLIENT_URL);
+
 ("use strict");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 /**
