@@ -12,6 +12,7 @@ module.exports = createCoreController("api::order.order", ({ strapi }) => ({
   async create(ctx) {
     try {
       if (!process.env.STRIPE_SECRET_KEY) {
+        console.log("Stripe key missing", process.env.STRIPE_SECRET_KEY);
         throw new Error("Stripe key missing");
       }
   
@@ -30,6 +31,7 @@ module.exports = createCoreController("api::order.order", ({ strapi }) => ({
             .findOne(product.id);
           
           if (!item) {
+            console.log("Product not found:", product.id);
             throw new Error(`Product not found: ${product.id}`);
           }
 
