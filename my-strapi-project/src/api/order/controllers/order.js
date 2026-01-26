@@ -11,9 +11,9 @@ module.exports = createCoreController("api::order.order", ({ strapi }) => ({
   
   async create(ctx) {
     try {
-      // if (!process.env.STRIPE_SECRET_KEY) {
-      //   throw new Error("Stripe key missing");
-      // }
+      if (!process.env.STRIPE_SECRET_KEY) {
+        throw new Error("Stripe key missing");
+      }
   
       console.log("Stripe key exists:", process.env.STRIPE_SECRET_KEY);
       console.log("CLIENT_URL key exists:", process.env.CLIENT_URL);
@@ -28,6 +28,10 @@ module.exports = createCoreController("api::order.order", ({ strapi }) => ({
           const item = await strapi
             .service("api::product.product")
             .findOne(product.id);
+          
+          if (!item) {
+            throw new Error(`Product not found: ${product.id}`);
+          }
 
           return {
             price_data: {
