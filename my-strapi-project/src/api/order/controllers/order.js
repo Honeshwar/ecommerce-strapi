@@ -10,14 +10,19 @@ const { createCoreController } = require("@strapi/strapi").factories;
 module.exports = createCoreController("api::order.order", ({ strapi }) => ({
   
   async create(ctx) {
-    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-    const CLIENT_URL = process.env.CLIENT_URL;
-
-    console.log("Stripe key exists:", !!process.env.STRIPE_SECRET_KEY);
-    console.log("CLIENT_URL key exists:", !!process.env.CLIENT_URL);
-    
-    const { products } = ctx.request.body;
     try {
+      // if (!process.env.STRIPE_SECRET_KEY) {
+      //   throw new Error("Stripe key missing");
+      // }
+  
+      console.log("Stripe key exists:", process.env.STRIPE_SECRET_KEY);
+      console.log("CLIENT_URL key exists:", process.env.CLIENT_URL);
+      const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+      const CLIENT_URL = process.env.CLIENT_URL;
+  
+  
+      const { products } = ctx.request.body;
+
       const lineItems = await Promise.all(
         products.map(async (product) => {
           const item = await strapi
