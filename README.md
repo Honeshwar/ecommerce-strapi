@@ -8,6 +8,9 @@ Designed to work seamlessly with modern frontends like **Next.js** and **React**
 🔗 **Admin Panel:**
 [https://diplomatic-approval-acb31df751.strapiapp.com/admin](https://diplomatic-approval-acb31df751.strapiapp.com/admin)
 
+🔗 **APIs Integrated React Application:**
+[https://honeshwar-store.netlify.app/](https://honeshwar-store.netlify.app/)
+
 
 ## 📸 Screenshot
 
@@ -19,6 +22,9 @@ Designed to work seamlessly with modern frontends like **Next.js** and **React**
 </p>
 <p align="center">
   <img src="./assets/screenshots/3.png" alt="Orders Management" width="800"/>
+</p>
+<p align="center">
+  <img src="./assets/screenshots/4.png" alt="Orders Management" width="800"/>
 </p>
 
 
@@ -99,3 +105,6 @@ This CMS exposes REST APIs that can be consumed by:
 * React Applications
 * Mobile Apps
 * Any Headless Commerce Client
+
+🔗 **APIs Integrated React Application:**
+[https://honeshwar-store.netlify.app/](https://honeshwar-store.netlify.app/)
