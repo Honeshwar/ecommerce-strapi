@@ -1,4 +1,4 @@
-import { STRAPI_URL } from "./constants.js";
+import { STRAPI_TOKEN, STRAPI_URL } from "./constants.js";
 import { fileFromUrl } from "./helpers.js";
 
 async function addCategory(category) {
@@ -25,7 +25,7 @@ async function addCategory(category) {
 
     const res = await fetch(`${STRAPI_URL}/api/categories`, {
       method: "POST",
-      // headers: { Authorization: `Bearer ${STRAPI_TOKEN}` },
+      headers: { Authorization: `Bearer ${STRAPI_TOKEN}` },
       body: formData,
     });
 

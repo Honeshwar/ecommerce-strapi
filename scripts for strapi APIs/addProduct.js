@@ -1,4 +1,4 @@
-import { STRAPI_URL } from "./constants.js";
+import { STRAPI_TOKEN, STRAPI_URL } from "./constants.js";
 import { fileFromUrl } from "./helpers.js";
 
 // add product func
@@ -36,7 +36,7 @@ async function addProduct(product) {
 
     const res = await fetch(`${STRAPI_URL}/api/products`, {
       method: "POST",
-      // headers: { Authorization: `Bearer ${STRAPI_TOKEN}` },
+      headers: { Authorization: `Bearer ${STRAPI_TOKEN}` },
       body: formData,
     });
 
@@ -55,143 +55,6 @@ async function addProduct(product) {
 
 // Example product list
 const products = [
-  {
-    title: "Classic White T-Shirt",
-    desc: "Soft cotton regular fit tee",
-    price: 999,
-    oldPrice: 1299,
-    isNew: true,
-    type: "trending",
-    categories: [3], // Men
-    sub_categories: [1], // T-Shirts,
-    images:[
-      "https://res.cloudinary.com/drct1kgjv/image/upload/v1704702039/indian_man_simple_white_tee_studio_portrait_de169cdc72.jpg",
-      "https://res.cloudinary.com/drct1kgjv/image/upload/v1757853222/medium_tshirt_8726716_1280_7f7de55683.jpg"
-    ]
-  },
-  {
-    title: "Denim Jacket",
-    desc: "Blue washed slim fit denim jacket",
-    price: 2499,
-    oldPrice: 2999,
-    isNew: false,
-    type: "trending",
-    categories: [2], // Women
-    sub_categories: [2], // Jackets
-    images:[
-      "https://res.cloudinary.com/drct1kgjv/image/upload/v1757853868/blue_2566082_1280_ddacd2694f.jpg",
-      "https://res.cloudinary.com/drct1kgjv/image/upload/v1757853846/people_2589566_1280_0950d1d4e2.jpg"
-    ]
-  },
-  {
-    title: "Leather Handbag",
-    desc: "Brown premium leather handbag",
-    price: 3499,
-    oldPrice: 3999,
-    isNew: true,
-    type: "featured",
-    categories: [5], // Accessories
-    sub_categories: [5], // Bags
-    images:[
-      "https://res.cloudinary.com/drct1kgjv/image/upload/v1757854328/ai_generated_8571263_1280_c9ef287031.jpg",
-      "https://res.cloudinary.com/drct1kgjv/image/upload/v1757854327/handbag_8310851_1280_cae97a2488.jpg"
-    ]
-  },
-  {
-    title: "Running Sneakers",
-    desc: "Lightweight breathable sneakers",
-    price: 2999,
-    oldPrice: 3499,
-    isNew: true,
-    type: "normal",
-    categories: [4], // New Season
-    sub_categories: [4], // Sneakers
-    images:[
-      "https://res.cloudinary.com/drct1kgjv/image/upload/v1704700928/medium_omar_prestwich_j_LE_Gurep_Dco_unsplash_d1877a6164.jpg",
-      "https://res.cloudinary.com/drct1kgjv/image/upload/v1704700921/joseph_barrientos_4q_Sb_F_Wh_H_Ks_unsplash_54608ea19c.jpg"
-    ]
-  },
-  {
-    title: "Formal Pants",
-    desc: "Black slim-fit trousers",
-    price: 1999,
-    oldPrice: 2499,
-    isNew: false,
-    type: "trending",
-    categories: [3], // Men
-    sub_categories: [3], // Pants
-    images: [
-      "https://res.cloudinary.com/drct1kgjv/image/upload/v1704700917/large_portrait_happy_smiling_young_businessman_brown_suit_isolated_white_wall_326271be61.jpg",
-      "https://res.cloudinary.com/drct1kgjv/image/upload/v1704700928/large_portrait_happy_smiling_young_businessman_blue_suit_isolated_white_wall_79a92f80c3.jpg"
-    ]
-  },
-  {
-    title: "Printed Maxi Dress",
-    desc: "Floral summer maxi dress",
-    price: 2299,
-    oldPrice: 2699,
-    isNew: true,
-    type: "trending",
-    categories: [2], // Women
-    sub_categories: [1], // T-Shirts
-
-  },
-  {
-    title: "Denim Overcoat",
-    desc: "Warm denim overcoat",
-    price: 3999,
-    oldPrice: 4499,
-    isNew: false,
-    type: "trending",
-    categories: [4], // New Season
-    sub_categories: [2], // Jackets
-    images:[
-      "https://res.cloudinary.com/drct1kgjv/image/upload/v1757853868/blue_2566082_1280_ddacd2694f.jpg",
-      "https://res.cloudinary.com/drct1kgjv/image/upload/v1757853846/people_2589566_1280_0950d1d4e2.jpg"
-    ]
-  },
-  {
-    title: "Casual Backpack",
-    desc: "Durable canvas backpack",
-    price: 1599,
-    oldPrice: 1899,
-    isNew: true,
-    type: "featured",
-    categories: [1], // Sales
-    sub_categories: [5], // Bags
-    images:[
-      "https://res.cloudinary.com/drct1kgjv/image/upload/v1757855700/woman_7405691_1280_87db98ca47.jpg",
-      "https://res.cloudinary.com/drct1kgjv/image/upload/v1757855699/medium_man_8192663_1280_93e8a33159.jpg"
-    ]
-  },
-  {
-    title: "Sports Sneakers",
-    desc: "High grip sports shoes",
-    price: 2799,
-    oldPrice: 3199,
-    isNew: true,
-    type: "normal",
-    categories: [6], // Shoes
-    sub_categories: [4], // Sneakers
-    images:[
-      "https://res.cloudinary.com/drct1kgjv/image/upload/v1757854044/medium_nike_5020612_1280_1537819935.jpg",
-      "https://res.cloudinary.com/drct1kgjv/image/upload/v1757854045/small_shoes_3780166_1280_6c7735a6b2.jpg"
-    ]
-  },
-  {
-    title: "Evening Clutch",
-    desc: "Elegant black party clutch",
-    price: 1899,
-    oldPrice: 2199,
-    isNew: false,
-    type: "featured",
-    categories: [2], // Women
-    sub_categories: [5], // Bags
-    images:[
-      "https://res.cloudinary.com/drct1kgjv/image/upload/v1704700912/large_full_shot_woman_online_fashion_shopping_c93442f396.jpg",
-      ""
-    ]
-  },
    {
     title: "Classic White T-Shirt",
     desc: "This classic white t-shirt is crafted from premium soft cotton fabric that feels gentle on the skin and stays comfortable all day long. Designed with a regular fit, it offers a clean and timeless look that works well for casual outings, office wear, or layering under jackets. The breathable material ensures proper airflow, making it ideal for warm weather. Easy to maintain and durable, this t-shirt retains its shape and color even after multiple washes, making it a reliable wardrobe essential.",
@@ -323,10 +186,10 @@ const products = [
     type: "trending",
     categories: [3], // Men
     sub_categories: [1], // T-Shirts
-    // images: [
-    //   "https://pixabay.com/images/download/x-7508618_1920.jpg",
-    //   "https://pixabay.com/images/download/x-7539134_1920.jpg"
-    // ]
+    images: [
+      "https://diplomatic-approval-acb31df751.media.strapiapp.com/thumbnail_fashion_7539134_1920_9c87fab1e0.jpg?updatedAt=2026-01-26T07%3A47%3A07.131Z",
+      "https://diplomatic-approval-acb31df751.media.strapiapp.com/thumbnail_woman_7508618_1920_2c00bef7e3.jpg?updatedAt=2026-01-26T07%3A47%3A06.971Z"
+    ]
   },
   {
     title: "Women’s Cropped Denim Jacket",
@@ -337,10 +200,10 @@ const products = [
     type: "featured",
     categories: [2], // Women
     sub_categories: [2], // Jackets
-    // images: [
-    //   "https://pixabay.com/images/download/x-6240825_1920.jpg",
-    //   "https://pixabay.com/images/download/x-6240820_1920.jpg"
-    // ]
+    images: [
+      "https://diplomatic-approval-acb31df751.media.strapiapp.com/thumbnail_denim_jacket_6240820_1920_747af15b12.jpg?updatedAt=2026-01-26T07%3A47%3A07.187Z",
+      "https://diplomatic-approval-acb31df751.media.strapiapp.com/thumbnail_denim_jacket_6240825_1920_93723baa1a.jpg?updatedAt=2026-01-26T07%3A47%3A07.413Z"
+    ]
   },
   {
     title: "Slim Fit Chino Pants",
@@ -351,10 +214,10 @@ const products = [
     type: "normal",
     categories: [3], // Men
     sub_categories: [3], // Pants
-    // images: [
-    //   "https://pixabay.com/images/download/x-7638970_1920.jpg",
-    //   "https://pixabay.com/images/download/x-2590825_1920.jpg"
-    // ]
+    images: [
+      "https://diplomatic-approval-acb31df751.media.strapiapp.com/thumbnail_man_7518890_1920_40519a35f1.jpg?updatedAt=2026-01-26T08%3A55%3A28.926Z",
+      "https://diplomatic-approval-acb31df751.media.strapiapp.com/thumbnail_man_5987532_1920_ca8d87b4c2.jpg?updatedAt=2026-01-26T07%3A47%3A07.466Z"
+    ]
   },
   {
     title: "Lightweight Running Sneakers",
@@ -365,10 +228,10 @@ const products = [
     type: "trending",
     categories: [6], // Shoes
     sub_categories: [4], // Sneakers
-    // images: [
-    //   "https://pixabay.com/images/download/x-5162595_1920.jpg",
-    //   "https://pixabay.com/images/download/x-9000156_1920.jpg"
-    // ]
+    images:[
+      "https://res.cloudinary.com/drct1kgjv/image/upload/v1704700928/medium_omar_prestwich_j_LE_Gurep_Dco_unsplash_d1877a6164.jpg",
+      "https://res.cloudinary.com/drct1kgjv/image/upload/v1704700921/joseph_barrientos_4q_Sb_F_Wh_H_Ks_unsplash_54608ea19c.jpg"
+    ]
   },
   {
     title: "Minimal Leather Sling Bag",
@@ -379,10 +242,10 @@ const products = [
     type: "featured",
     categories: [5], // Accessories
     sub_categories: [5], // Bags
-    // images: [
-    //   "https://pixabay.com/images/download/x-1866572_1920.jpg",
-    //   "https://pixabay.com/images/download/x-7431099_1920.jpg"
-    // ]
+    images: [
+      "https://diplomatic-approval-acb31df751.media.strapiapp.com/thumbnail_girl_2201009_1920_5c0640a02a.jpg?updatedAt=2026-01-26T07%3A47%3A07.292Z",
+      "https://diplomatic-approval-acb31df751.media.strapiapp.com/thumbnail_girl_7867737_1920_5b31c1c6ed.jpg?updatedAt=2026-01-26T07%3A47%3A07.224Z"
+    ]
   },
   {
     title: "Seasonal Casual Sneakers",
@@ -393,10 +256,10 @@ const products = [
     type: "normal",
     categories: [4], // New Season
     sub_categories: [4], // Sneakers
-    // images: [
-    //   "https://pixabay.com/images/download/x-9963762_1920.jpg",
-    //   "https://pixabay.com/photos/woman-model-pose-sky-dress-casual-5440729/"
-    // ]
+    images: [
+      "https://diplomatic-approval-acb31df751.media.strapiapp.com/thumbnail_autumn_9963762_1920_303fa44880.jpg?updatedAt=2026-01-26T07%3A47%3A07.132Z",
+      "https://diplomatic-approval-acb31df751.media.strapiapp.com/thumbnail_man_5582507_1920_7d9d11507a.jpg?updatedAt=2026-01-26T07%3A47%3A07.475Z"
+    ]
   }
 ];
 

@@ -1,4 +1,4 @@
-import { STRAPI_URL } from "./constants.js";
+import { STRAPI_TOKEN, STRAPI_URL } from "./constants.js";
 
 async function addSubCategory(subCategory) {
   try {
@@ -8,13 +8,13 @@ async function addSubCategory(subCategory) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        // Authorization: `Bearer ${STRAPI_TOKEN}`
+        Authorization: `Bearer ${STRAPI_TOKEN}`
       },
       body: JSON.stringify({
         data: {
           title: subCategory.title,
           //   products: subCategory.products,
-          //   categories: subCategory.categories
+          categories: subCategory.categories
         },
       }),
     });
@@ -37,27 +37,27 @@ const subCategories = [
   {
     title: "T-Shirts",
     // products: [1, 6],
-    // categories: [1, 2]
+    categories: [1, 2]
   },
   {
     title: "Jackets",
     // products: [2, 7],
-    // categories: [2, 4]
+    categories: [2, 4]
   },
   {
     title: "Pants",
     // products: [5],
-    // categories: [1]
+    categories: [1]
   },
   {
     title: "Sneakers",
     // products: [4, 9],
-    // categories: [1, 4]
+    categories: [1, 4]
   },
   {
     title: "Bags",
     // products: [3, 8, 10],
-    // categories: [3, 5]
+    categories: [3, 5]
   },
 ];
 
